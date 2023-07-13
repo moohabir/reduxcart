@@ -9,7 +9,7 @@ function PaymentForm() {
   const [clientSecret, setClientSecret] = useState('');
   useEffect(() => {
     const fetchPublicKey = async () => {
-      const res = await axios.get('http://localhost:9000/config');
+      const res = await axios.get('https://reduxcart-x68s.onrender.com/config');
       const { pablishebaleKey } = res.data;
       setStripePromise(loadStripe(pablishebaleKey));
       console.log(pablishebaleKey);
@@ -20,7 +20,7 @@ function PaymentForm() {
   useEffect(() => {
     const fetchSecretKey = async () => {
       const res = await axios.post(
-        'http://localhost:9000/create-payment-intent'
+        'https://reduxcart-x68s.onrender.com/create-payment-intent'
       );
       const { client_secret } = res.data;
       console.log(client_secret);
