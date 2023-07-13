@@ -16,6 +16,19 @@ app.use(
   })
 );
 
+// Serve frontend
+if (process.env.NODE_ENV === 'production') {
+  // Serve static files from the "build" folder
+  app.use(express.static(path.join(__dirname, './client/build')));
+
+  // Route all other requests to the frontend's "index.html" file
+  app.get('*', (req, res) =>
+    res.sendFile(path.resolve(__dirname, './frontend/build', 'index.html'))
+  );
+} else {
+  app.get('/', (req, res) => res.send('Please set to production'));
+}
+
 app.get('/config', (req, res) => {
   res.send({ pablishebaleKey: process.env.STRIPE_PUBLISHABLE_KEY });
 });
