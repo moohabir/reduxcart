@@ -3,7 +3,6 @@ import axios from 'axios';
 
 //const url = 'https://course-api.com/react-useReducer-cart-project';
 const url = 'https://fakestoreapi.com/products';
-console.log(url);
 
 export const getProductItems = createAsyncThunk(
   'product, getProducts',
