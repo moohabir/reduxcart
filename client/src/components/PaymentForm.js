@@ -12,7 +12,6 @@ function PaymentForm() {
       const res = await axios.get('https://reduxcart-x68s.onrender.com/config');
       const { pablishebaleKey } = res.data;
       setStripePromise(loadStripe(pablishebaleKey));
-      console.log(pablishebaleKey);
     };
     fetchPublicKey();
   }, []);
@@ -23,7 +22,6 @@ function PaymentForm() {
         'https://reduxcart-x68s.onrender.com/create-payment-intent'
       );
       const { client_secret } = res.data;
-      console.log(client_secret);
 
       setClientSecret(client_secret);
     };
