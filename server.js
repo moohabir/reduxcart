@@ -8,7 +8,11 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: 'https://reduxcart-one.vercel.app',
+    origin: [
+      'https://reduxcart-one.vercel.app/',
+      'http://localhost:3000',
+      'https://reduxcart-x68s.onrender.com',
+    ],
   })
 );
 
