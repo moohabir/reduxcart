@@ -5,7 +5,12 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+
+app.use(
+  cors({
+    origin: 'https://reduxcart-one.vercel.app',
+  })
+);
 
 app.get('/config', (req, res) => {
   res.send({ pablishebaleKey: process.env.STRIPE_PUBLISHABLE_KEY });
