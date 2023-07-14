@@ -20,6 +20,7 @@ function PaymentForm() {
     const fetchSecretKey = async () => {
       const res = await axios.post(
         'https://reduxcart-x68s.onrender.com/create-payment-intent'
+        //'http://localhost:9000/create-payment-intent'
       );
       const { client_secret } = res.data;
 
