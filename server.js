@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-const path = require('path');
+//const path = require('path');
 
 const app = express();
 app.use(express.json());
@@ -18,17 +18,17 @@ app.use(
 );
 
 // Serve frontend
-if (process.env.NODE_ENV === 'production') {
-  // Serve static files from the "build" folder
-  app.use(express.static(path.join(__dirname, './client/build')));
+//if (process.env.NODE_ENV === 'production') {
+// Serve static files from the "build" folder
+//  app.use(express.static(path.join(__dirname, './client/build')));
 
-  // Route all other requests to the frontend's "index.html" file
-  app.get('*', (req, res) =>
-    res.sendFile(path.resolve(__dirname, './client/build', 'index.html'))
-  );
-} else {
-  app.get('/', (req, res) => res.send('Please set to production'));
-}
+// Route all other requests to the frontend's "index.html" file
+// app.get('*', (req, res) =>
+// res.sendFile(path.resolve(__dirname, './client/build', 'index.html'))
+// );
+//} else {
+// app.get('/', (req, res) => res.send('Please set to production'));
+//}
 
 app.get('/config', (req, res) => {
   res.send({ pablishebaleKey: process.env.STRIPE_PUBLISHABLE_KEY });
